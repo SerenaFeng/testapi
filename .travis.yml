@@ -3,11 +3,8 @@ language: bash
 services: docker
 language: generic
 before_script:
-  - sudo apt-get -y install qemu-user-static
-  - sudo -E docker login -u="${DOCKER_USER}" -p="${DOCKER_PASS}"
+  - docker login -u="${DOCKER_USER}" -p="${DOCKER_PASS}"
 jobs:
   include:
     - stage: build docker image
       script: cd docker && docker build -t ${DOCKER_USER}/testapi:latest . && docker push ${DOCKER_USER}/testapi:latest
-#after_success:
-#  - docker push ${DOCKER_USER}/testapi:latest
