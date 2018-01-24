@@ -8,8 +8,6 @@ before_script:
 jobs:
   include:
     - stage: build docker image
-      script: cd docker && docker build -t ${DOCKER_USER}/testapi:latest .
-    - stage: push docker image
-      script: docker push ${DOCKER_USER}/testapi:latest
+      script: cd docker && docker build -t ${DOCKER_USER}/testapi:latest . && docker push ${DOCKER_USER}/testapi:latest
 #after_success:
 #  - docker push ${DOCKER_USER}/testapi:latest
